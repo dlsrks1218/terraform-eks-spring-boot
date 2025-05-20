@@ -16,7 +16,7 @@ variable "resource_name" {
 }
 
 variable "solution_name" {
-  description = "Solution name" # 솔루션, 프로젝트 명(office-solution-web-be..)
+  description = "Solution name" # 솔루션, 프로젝트 명
   type        = string
   default     = "test"
 }
