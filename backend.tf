@@ -7,7 +7,7 @@ terraform {
   }
   backend "remote" {
     hostname     = "app.terraform.io"
-    organization = "aws-naver"
+    organization = "aws-test"
 
     workspaces {
       name = "test-cluster"
