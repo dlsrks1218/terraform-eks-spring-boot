@@ -1,4 +1,3 @@
-# values.yaml.tpl
 clusterName: ${cluster_id}
 serviceAccount:
   create: ${service_account_create}
