@@ -6,6 +6,7 @@ variable "aws_region" {
 variable "account_id" {
   description = "aws account id"
   type        = string
+  default     = "xxxxxxxxxxxx"
 }
 
 ## 필수 공용 Tag
@@ -73,4 +74,5 @@ variable "endpoint_private_access" {
 variable "image_uri" {
   description = "배포할 컨테이너 이미지 URI"
   type        = string
+  default     = "<ACCOUNT_ID>.dkr.ecr.ap-northeast-2.amazonaws.com/<REPO_NAME>"
 }

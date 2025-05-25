@@ -76,7 +76,10 @@ module "eks" {
       capacity_type  = "ON_DEMAND" # SPOT
       subnet_ids     = module.vpc.private_subnets
 
-      labels = { role = "workload" }
+      labels = {
+        role        = "workload"
+        subnet-type = "private"
+      }
       # taints = []
       tags = {
         "k8s.io/cluster-autoscaler/enabled"             = "true" # 

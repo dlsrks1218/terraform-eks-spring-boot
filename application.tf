@@ -40,6 +40,62 @@ resource "kubernetes_deployment" "hello" {
   depends_on = [module.eks]
 }
 
+resource "kubernetes_deployment" "hello" {
+  metadata {
+    name      = "hello"
+    namespace = "default"
+    labels = {
+      app = "hello"
+    }
+  }
+
+  spec {
+    replicas = 1
+
+    selector {
+      match_labels = {
+        app = "hello"
+      }
+    }
+
+    template {
+      metadata {
+        labels = {
+          app = "hello"
+        }
+      }
+
+      spec {
+        # nodeAffinity: 반드시 private 서브넷 노드에 스케줄되도록 강제
+        affinity {
+          node_affinity {
+            required_during_scheduling_ignored_during_execution {
+              node_selector_term {
+                match_expressions {
+                  key      = "subnet-type"
+                  operator = "In"
+                  values   = ["private"]
+                }
+              }
+            }
+          }
+        }
+
+        container {
+          name  = "hello"
+          image = var.image_uri
+          port {
+            container_port = 8080
+          }
+        }
+      }
+    }
+  }
+
+  depends_on = [module.eks]
+}
+
+
 resource "kubernetes_service" "hello" {
   metadata {
     name      = "hello"
