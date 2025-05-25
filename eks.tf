@@ -31,12 +31,6 @@ module "eks" {
     vpc-cni = { # 파드에 VPC 서브넷 Ip를 바로 할당해주는 네트워크 플러그인
       resolve_conflicts = "OVERWRITE"
     }
-    # metrics-server = { # hpa, vpa 사용을 위한 클러스터 메트릭 수집용 애드온(Metrics API)
-    #   resolve_conflicts = "OVERWRITE"
-    # }
-    # cloudwatch-observability = { # cloudwatch agent를 통한 로깅, 모니터링
-    #   resolve_conflicts = "OVERWRITE"
-    # }
   }
 
   authentication_mode                      = "API_AND_CONFIG_MAP" # API와 ConfigMap 방식을 병행
