@@ -25,7 +25,8 @@ locals {
 
   # EKS 클러스터에 Viewer 권한으로 접근
   rbac_developer_users = {
-    developer_role = "arn:aws:iam::${var.account_id}:role/cross-account-developer-role"
+    developer_role = "arn:aws:iam::${var.account_id}:role/cross-account-developer-role"  # 멀티 어카운트 환경에서 수임할 developer role
+    developer_a    = "arn:aws:iam::${var.account_id}:user/developer_a"                   # 단일 계정 환경에서 접근 필요한 IAM 사용자 추가
   }
 }
 
